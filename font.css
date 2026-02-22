@@ -1,9 +1,5 @@
-/* 全体フォントの指定 */
-body {
-  font-family: 'RocknRoll One', sans-serif;
-}
-
-/* 見出しだけに使うなら */
-h1 {
-  font-family: 'RocknRoll One', sans-serif;
+.rocknroll-one-regular {
+  font-family: "RocknRoll One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
