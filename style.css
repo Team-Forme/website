@@ -31,3 +31,75 @@ h1,h2 {
 h2 {
         padding: 2em 0;
 }
+
+.cp_sidebarmenu {
+	position: absolute;
+	z-index: 1000;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	overflow: hidden;
+	width: 3.5em;
+	height: 100%;
+	-webkit-transition: width 0.6s ease;
+					transition: width 0.6s ease;
+	-webkit-transform: translateZ(0) scale(1,1);
+	border-right: 1px solid #e5e5e5;
+	background: #37474F;
+}
+.cp_sidebarmenu:hover {
+	overflow: visible;
+	width: 17em;
+}
+.cp_sidebarmenu ul {
+	margin: 7px 0;
+	padding: 0;
+	outline: 0;
+}
+.cp_sidebarmenu li {
+	position: relative;
+	display: block;
+	width: 17em;
+	margin: 0;
+	padding: 0;
+	outline: 0;
+}
+.cp_sidebarmenu li a {
+	position: relative;
+	display: table;
+	border-spacing: 0;
+	border-collapse: collapse;
+	text-decoration: none;
+	color: #ffffff;
+}
+.cp_sidebarmenu li:before {
+	content:"";
+	position: absolute;
+	top: 0px;
+	left: -17em;
+	height: 100%;
+	width: 17em;
+	background : rgba(240,98,146 ,0.5);
+	-webkit-transition: all 0.6s ease;
+					transition: all 0.6s ease;
+}
+.cp_sidebarmenu li:hover:before {
+	left:0;
+}
+.cp_sidebarmenu span {
+	position: relative;
+	display: table-cell;
+	width: 14em;
+	vertical-align: middle;
+}
+.cp_sidebarmenu > ul.control {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+.cp_sidebarmenu ul li i {
+	font-size: 1.5em;
+	display: inline-block;
+	padding: 0.5em;
+	vertical-align: middle;
+}
