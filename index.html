@@ -2,21 +2,11 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Forme Business Group</title>
-
-  <!-- Google Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap" rel="stylesheet">
-
-  <!-- CSS読み込み -->
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-  <!-- ローディング画面 -->
   <div id="loading">
     <div class="spinner"></div>
   </div>
@@ -26,7 +16,12 @@
 
   <script>
     window.addEventListener("load", function () {
-      document.getElementById("loading").style.display = "none";
+      setTimeout(function () {
+        document.getElementById("loading").style.opacity = "0";
+        setTimeout(function () {
+          document.getElementById("loading").style.display = "none";
+        }, 500);
+      }, 3000);
     });
   </script>
 
