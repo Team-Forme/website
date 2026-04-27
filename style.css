@@ -99,3 +99,50 @@ footer {
     width: 100%;
     font-size: 14px;
 }
+
+/* --- 追加：パスワード表示ボタンのスタイル --- */
+.password-wrapper {
+    position: relative; /* ボタンを重ねるための基準にする */
+    display: flex;
+    align-items: center;
+}
+
+.password-wrapper input {
+    /* ボタンの文字と入力文字が被らないように右側に余白を作る */
+    padding-right: 60px; 
+}
+
+.toggle-btn {
+    position: absolute;
+    right: 10px; /* 入力欄の右端に配置 */
+    background: none;
+    border: none;
+    color: #0067C0;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.toggle-btn:hover {
+    text-decoration: underline;
+}
+
+/* --- 変更：ログインボタンをグラデーションに --- */
+.login-btn {
+    width: 100%;
+    padding: 14px;
+    /* #0067C0 から少し明るい水色へのグラデーション */
+    background: linear-gradient(135deg, #0067C0, #00a3ff); 
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: opacity 0.3s ease; /* ホバー時は透明度を変える */
+}
+
+.login-btn:hover {
+    /* グラデーションはbackground-colorで上書きできないため、透明度でホバーを表現します */
+    opacity: 0.85; 
+}
