@@ -3,59 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>新規登録</title>
+    <title>サインアップ</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="wrapper">
-        <main class="login-container">
-            <div class="login-box">
-                <h2>アカウント作成</h2>
+        <main class="container">
+            <div class="card">
+                <header class="card-header">
+                    <h1>Create Account</h1>
+                    <p>サイトを開始するために詳細を入力してください</p>
+                </header>
                 
                 <button type="button" id="google-login" class="google-btn">
-                    <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/layout/google.svg" alt="Google icon">
-                    Googleでログイン
+                    <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/layout/google.svg" alt="">
+                    <span>Continue with Google</span>
                 </button>
 
-                <div class="divider"><span>または</span></div>
+                <div class="separator">or</div>
 
                 <form id="registration-form">
-                    <div class="input-group">
-                        <label for="email">メールアドレス</label>
-                        <input type="email" id="email" required>
+                    <div class="field">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="email@example.com" required>
                     </div>
                     
-                    <div class="input-group">
-                        <label for="password">パスワード</label>
-                        <div class="password-wrapper">
-                            <input type="password" id="password" 
-                                   pattern="^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$"
-                                   title="英語大文字、数字、記号を各1文字以上含み、8文字以上で入力してください。ひらがな・カタカナは使用できません。"
-                                   required>
-                            <button type="button" id="togglePassword" class="toggle-btn">表示</button>
+                    <div class="field">
+                        <label>Password</label>
+                        <div class="password-group">
+                            <input type="password" id="password" placeholder="••••••••" required>
+                            <button type="button" id="togglePassword" class="eye-icon">Show</button>
                         </div>
-                        <ul class="requirements">
-                            <li id="req-length">・8文字以上</li>
-                            <li id="req-upper">・英語大文字を含む</li>
-                            <li id="req-number">・数字を含む</li>
-                            <li id="req-symbol">・記号(!@#$%^&*)を含む</li>
-                            <li id="req-no-jp">・ひらがな/カタカナ不可</li>
+                        <div class="strength-meter">
+                            <div class="meter-bar" id="meter-bar"></div>
+                        </div>
+                        <ul class="hints">
+                            <li id="req-length">8文字以上</li>
+                            <li id="req-upper">大文字</li>
+                            <li id="req-number">数字</li>
+                            <li id="req-symbol">記号</li>
                         </ul>
                     </div>
 
-                    <div class="input-group">
-                        <label for="confirm-password">パスワード（再確認）</label>
-                        <input type="password" id="confirm-password" required>
-                        <p id="match-error" class="error-msg">パスワードが一致しません</p>
+                    <div class="field">
+                        <label>Confirm Password</label>
+                        <input type="password" id="confirm-password" placeholder="••••••••" required>
+                        <span id="match-error" class="error-text">パスワードが一致しません</span>
                     </div>
 
-                    <button type="submit" class="login-btn">登録する</button>
+                    <button type="submit" class="submit-btn">Create Account</button>
                 </form>
             </div>
         </main>
     </div>
 
-    <footer>
+    <footer class="main-footer">
         <p>&copy; 2026 Forme Business Group. All rights reserved.</p>
     </footer>
 
