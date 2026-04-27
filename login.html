@@ -8,70 +8,51 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="wrapper">
-        <main class="container">
-            <div class="card">
-                <header class="main-header">
-    <div class="header-container">
-        <div class="logo">
-            <span class="logo-dot"></span>
-            Modern<span>Project</span>
-        </div>
-        <nav class="nav-links">
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#" class="nav-btn">Sign In</a>
-        </nav>
-    </div>
+    <h1>サインアップ</h1>
+    <p>サービスを利用するためにアカウントを作成します。</p>
 </header>
+               
+    <button type="button" id="google-login" class="google-btn">
+        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/layout/google.svg" alt="">
+        <span>Googleでログイン</span>
+    </button>
 
-<div class="wrapp>
-    <header class="card-header">
-                    <h1>サインアップ</h1>
-                    <p>サービスを利用するためにアカウントを作成します。</p>
-                </header>
-                
-                <button type="button" id="google-login" class="google-btn">
-                    <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/layout/google.svg" alt="">
-                    <span>Googleでログイン</span>
-                </button>
+    <div class="separator">or</div>
 
-                <div class="separator">or</div>
-
-                <form id="registration-form">
-                    <div class="field">
-                        <label>メールアドレス</label>
-                        <input type="email" placeholder="email@example.com" required>
-                    </div>
+    <form id="registration-form">
+        <div class="field">
+            <label>メールアドレス</label>
+            <input type="email" placeholder="email@example.com" required>
+        </div>
                     
-                    <div class="field">
-                        <label>パスワード</label>
-                        <div class="password-group">
-                            <input type="password" id="password" placeholder="••••••••" required>
-                            <button type="button" id="togglePassword" class="eye-icon">Show</button>
-                        </div>
-                        <div class="strength-meter">
-                            <div class="meter-bar" id="meter-bar"></div>
-                        </div>
-                        <ul class="hints">
-                            <li id="req-length">8文字以上</li>
-                            <li id="req-upper">大文字</li>
-                            <li id="req-number">数字</li>
-                            <li id="req-symbol">記号</li>
-                        </ul>
-                    </div>
-
-                    <div class="field">
-                        <label>パスワードを再入力</label>
-                        <input type="password" id="confirm-password" placeholder="••••••••" required>
-                        <span id="match-error" class="error-text">パスワードが一致しません</span>
-                    </div>
-
-                    <button type="submit" class="submit-btn">アカウントを作成</button>
-                </form>
+        <div class="field">
+            <label>パスワード</label>
+            <div class="password-group">
+                <input type="password" id="password" placeholder="••••••••" required>
+                <button type="button" id="togglePassword" class="eye-icon">Show</button>
             </div>
-        </main>
-    </div>
+            <div class="strength-meter">
+                <div class="meter-bar" id="meter-bar"></div>
+            </div>
+            <ul class="hints">
+                <li id="req-length">8文字以上</li>
+                <li id="req-upper">大文字</li>
+                <li id="req-number">数字</li>
+                <li id="req-symbol">記号</li>
+            </ul>
+        </div>
+
+        <div class="field">
+            <label>パスワードを再入力</label>
+            <input type="password" id="confirm-password" placeholder="••••••••" required>
+            <span id="match-error" class="error-text">パスワードが一致しません</span>
+        </div>
+
+        <button type="submit" class="submit-btn">アカウントを作成</button>
+    </form>
+</div>
+</main>
+</div>
 
     <footer class="main-footer">
         <p>&copy; 2026 Forme Business Group. All rights reserved.</p>
