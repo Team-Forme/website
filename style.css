@@ -411,3 +411,84 @@ input:focus {
     color: var(--text-sub);
     border-top: 1px solid var(--border);
 }
+/* --- ヘッダーのスタイル --- */
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background: rgba(255, 255, 255, 0.8); /* 透明度を持たせる */
+    backdrop-filter: blur(10px); /* 背景をぼかす */
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-main);
+}
+
+.logo span {
+    color: var(--primary); /* Projectの部分だけ青に */
+}
+
+.logo-dot {
+    width: 10px;
+    height: 10px;
+    background: var(--primary-grad);
+    border-radius: 50%;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-sub);
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+/* ヘッダー内のボタン */
+.nav-btn {
+    padding: 8px 20px;
+    border: 1px solid var(--primary);
+    border-radius: 8px;
+    color: var(--primary) !important;
+}
+
+.nav-btn:hover {
+    background: var(--primary);
+    color: #fff !important;
+}
+
+/* ヘッダー固定に伴う余白調整 */
+.wrapper {
+    padding-top: 100px; /* ヘッダーの高さ分、中身を下げる */
+}
