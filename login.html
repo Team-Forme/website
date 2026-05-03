@@ -12,6 +12,15 @@
     <meta name="apple-mobile-web-app-title" content="Forme">
     <link rel="apple-touch-icon" href="https://via.placeholder.com/192x192/0067C0/ffffff?text=F">
 </head>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(reg => console.log('PWA準備完了'))
+                    .catch(err => console.log('PWAエラー:', err));
+            });
+            
+    </script>
 <body>
     <div class="bg-waves">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
