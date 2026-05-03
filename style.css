@@ -324,3 +324,12 @@ input:focus {
     height: 320px;
     transform: rotateY(180deg);
 }
+
+/* 入力が有効な（バリデーションを通った）時のスタイル */
+input:valid:not(:placeholder-shown) {
+    border-color: #10b981; /* 綺麗な緑色 */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2310b981'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 13l4 4L19 7'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 20px;
+}
