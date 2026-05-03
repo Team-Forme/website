@@ -1,0 +1,20 @@
+{
+  "name": "Forme Rancher",
+  "short_name": "Forme",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#0067C0",
+  "icons": [
+    {
+      "src": "https://via.placeholder.com/192x192/0067C0/ffffff?text=F",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://via.placeholder.com/512x512/0067C0/ffffff?text=Forme",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
