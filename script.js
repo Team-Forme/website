@@ -86,3 +86,52 @@ password.addEventListener('input', () => {
         successIcon.style.display = 'none';
     }
 });
+
+const registrationForm = document.getElementById('registration-form');
+const toastContainer = document.getElementById('toast-container');
+
+// トーストを表示する共通関数
+function showToast(message) {
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.innerHTML = `⚠️ <span>${message}</span>`;
+    
+    toastContainer.appendChild(toast);
+
+    // 3秒後に要素を削除
+    setTimeout(() => {
+        toast.remove();
+    }, 3000);
+}
+
+// フォーム送信時のバリデーション
+registrationForm.addEventListener('submit', (e) => {
+    e.preventDefault(); // 実際の送信を止めてチェック
+
+    const email = document.getElementById('email').value;
+    const pass = password.value;
+    const confirmPass = confirmPassword.value;
+
+    // 1. 未入力チェック
+    if (!email || !pass || !confirmPass) {
+        showToast("すべての項目を入力してください");
+        return;
+    }
+
+    // 2. パスワード一致チェック
+    if (pass !== confirmPass) {
+        showToast("パスワードが一致していません");
+        return;
+    }
+
+    // 3. パスワード強度チェック（すべてのヒントが valid か）
+    const allValid = document.querySelectorAll('.hints li.valid').length === 4;
+    if (!allValid) {
+        showToast("パスワードの条件をすべて満たしてください");
+        return;
+    }
+
+    // すべてOKなら
+    alert("登録が完了しました"); 
+    // ここで実際のサーバー送信処理などを書きます
+});
