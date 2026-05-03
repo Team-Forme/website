@@ -22,33 +22,42 @@ body {
 
 @keyframes fadeInPage { from { opacity: 0; } to { opacity: 1; } }
 
-/* ヘッダー */
-.main-header {
-    position: fixed; top: 0; width: 100%; height: 70px;
-    background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border); z-index: 1000;
+/* ヘッダー削除に伴い、中央配置を強化 */
+.wrapper { 
+    flex: 1; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    z-index: 1; 
+    padding: 60px 0; /* ヘッダーがない分、上下に少し余白 */
 }
 
-.header-container {
-    max-width: 1200px; margin: 0 auto; height: 100%;
-    padding: 0 40px; display: flex; justify-content: space-between; align-items: center;
+.container { width: 100%; display: flex; justify-content: center; padding: 0 20px; }
+
+.card { 
+    background: var(--white); 
+    width: 100%; 
+    max-width: 440px; 
+    padding: 48px; 
+    border-radius: 24px; 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05); 
 }
 
-.logo { font-size: 20px; font-weight: 600; display: flex; align-items: center; gap: 8px; }
-.logo-dot { width: 10px; height: 10px; background: var(--primary-grad); border-radius: 50%; }
-
-.nav-links { display: flex; gap: 32px; align-items: center; }
-.nav-links a { text-decoration: none; color: var(--text-sub); font-size: 14px; transition: 0.2s; }
-.nav-links a:hover { color: var(--primary); }
-.nav-btn { padding: 8px 20px; border: 1px solid var(--primary); border-radius: 8px; color: var(--primary) !important; }
-
-/* コンテンツ */
-.wrapper { flex: 1; padding-top: 100px; display: flex; justify-content: center; align-items: center; z-index: 1; }
-.container { width: 100%; display: flex; justify-content: center; padding: 40px 20px; }
-.card { background: var(--white); width: 100%; max-width: 440px; padding: 48px; border-radius: 24px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+/* カード内ロゴ */
+.card-logo {
+    font-size: 22px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 24px;
+    color: var(--text-main);
+}
+.logo-dot { width: 12px; height: 12px; background: var(--primary-grad); border-radius: 50%; }
 
 .card-header { text-align: center; margin-bottom: 32px; }
-.card-header h1 { font-size: 28px; font-weight: 600; margin-bottom: 8px; }
+.card-header h1 { font-size: 26px; font-weight: 600; margin-bottom: 8px; }
 .card-header p { font-size: 14px; color: var(--text-sub); }
 
 /* Googleボタン */
@@ -62,7 +71,7 @@ body {
 .separator { display: flex; align-items: center; margin: 24px 0; color: var(--text-sub); font-size: 12px; }
 .separator::before, .separator::after { content: ""; flex: 1; height: 1px; background: var(--border); margin: 0 16px; }
 
-/* フォーム */
+/* フォーム要素 */
 .field { margin-bottom: 20px; }
 .field label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 8px; }
 input { width: 100%; height: 48px; padding: 0 16px; border: 1px solid var(--border); border-radius: 10px; font-size: 15px; transition: 0.2s; }
@@ -82,10 +91,13 @@ input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 4px
 .submit-btn:active { transform: scale(0.98); }
 .error-text { font-size: 12px; color: #ef4444; display: none; margin-top: 4px; }
 
+/* セキュリティ */
+.security-note { display: flex; justify-content: center; align-items: center; gap: 6px; margin-top: 20px; font-size: 11px; color: var(--text-sub); opacity: 0.8; }
+
 /* フッター */
 .main-footer { background-color: #4f4643; color: #ffffff; padding: 60px 0 30px; }
 .footer-content { max-width: 1100px; margin: 0 auto; padding: 0 40px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; }
-.footer-brand .logo { color: #fff; margin-bottom: 12px; }
+.footer-brand .logo { font-size: 20px; font-weight: 600; color: #fff; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
 .footer-description { font-size: 14px; color: #cbc6c5; max-width: 250px; line-height: 1.6; }
 .footer-group { display: flex; gap: 40px; }
 .footer-column h4 { font-size: 14px; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.05em; }
@@ -93,7 +105,6 @@ input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 4px
 .footer-column a:hover { color: #fff; }
 .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); margin-top: 40px; padding-top: 20px; text-align: center; font-size: 12px; color: #9d9694; }
 
-.security-note { display: flex; justify-content: center; align-items: center; gap: 6px; margin-top: 20px; font-size: 11px; color: var(--text-sub); opacity: 0.8; }
-
 /* 背景の波 */
 .bg-waves { position: fixed; bottom: 0; width: 100%; z-index: -1; line-height: 0; }
+.bg-waves svg { width: 100%; height: auto; min-height: 300px; }
