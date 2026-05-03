@@ -74,13 +74,13 @@ body {
     font-weight: 500;
     cursor: pointer;
     transition: all 0.2s ease;
+    color: var(--text-main); /* テキスト色を明示 */
 }
 
-.google-btn:hover {
-    background-color: #f1f5f9;
-    border-color: #cbd5e1;
+/* SVGのサイズを固定 */
+.google-btn svg {
+    flex-shrink: 0;
 }
-
 .separator {
     display: flex;
     align-items: center;
