@@ -146,3 +146,80 @@ input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 4px
     from { transform: translateX(0); opacity: 1; }
     to { transform: translateX(20px); opacity: 0; }
 }
+
+/* --- スマートフォン・タブレット対応 (レスポンシブ) --- */
+
+@media (max-width: 768px) {
+    /* 1. 全体の余白調整 */
+    .wrapper {
+        padding: 40px 15px; /* 上下の余白を少し詰め、左右に遊びを作る */
+    }
+
+    .container {
+        padding: 0;
+    }
+
+    /* 2. カードの調整 */
+    .card {
+        padding: 32px 24px; /* 中の余白をスマホ用に最適化 */
+        border-radius: 20px; /* 少し角丸を控えめに */
+    }
+
+    /* 3. タイポグラフィ */
+    .card-header h1 {
+        font-size: 24px; /* タイトルを少し小さく */
+    }
+
+    .card-logo {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    /* 4. 入力欄とボタンのサイズ感 */
+    input {
+        height: 52px; /* タップしやすいように少し高さを出す */
+        font-size: 16px; /* スマホでズームされないための基準サイズ */
+    }
+
+    .submit-btn {
+        height: 56px;
+        font-size: 17px;
+    }
+
+    /* 5. フッターの調整 */
+    .footer-content {
+        flex-direction: column; /* 横並びから縦並びに変更 */
+        text-align: center;
+        gap: 30px;
+    }
+
+    .footer-brand {
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-group {
+        justify-content: space-around; /* リンクを横に広げて配置 */
+        width: 100%;
+        gap: 20px;
+    }
+
+    /* 6. 背景の波の調整 */
+    .bg-waves svg {
+        min-height: 200px; /* スマホでは波を少し低くして邪魔にならないように */
+    }
+}
+
+/* さらに小さい画面（iPhone SEなど）向け */
+@media (max-width: 380px) {
+    .card {
+        padding: 24px 16px;
+    }
+    
+    .footer-group {
+        flex-direction: column; /* リンクも縦並びに */
+        gap: 25px;
+    }
+}
