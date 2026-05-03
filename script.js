@@ -87,10 +87,16 @@ password.addEventListener('input', () => {
     }
 });
 
+// 要素の取得
 const registrationForm = document.getElementById('registration-form');
+const password = document.getElementById('password');
+const confirmPassword = document.getElementById('confirm-password');
+const meterBar = document.getElementById('meter-bar');
+const matchError = document.getElementById('match-error');
+const toggleBtn = document.getElementById('togglePassword');
 const toastContainer = document.getElementById('toast-container');
 
-// トーストを表示する共通関数
+// --- トースト表示関数 ---
 function showToast(message) {
     const toast = document.createElement('div');
     toast.className = 'toast';
@@ -98,15 +104,16 @@ function showToast(message) {
     
     toastContainer.appendChild(toast);
 
-    // 3秒後に要素を削除
+    // 2.7秒後に消去アニメーション開始
     setTimeout(() => {
-        toast.remove();
-    }, 3000);
+        toast.classList.add('hide');
+        setTimeout(() => toast.remove(), 300);
+    }, 2700);
 }
 
-// フォーム送信時のバリデーション
+// --- 送信時のチェック ---
 registrationForm.addEventListener('submit', (e) => {
-    e.preventDefault(); // 実際の送信を止めてチェック
+    e.preventDefault(); // ページリロードを防止
 
     const email = document.getElementById('email').value;
     const pass = password.value;
@@ -118,20 +125,54 @@ registrationForm.addEventListener('submit', (e) => {
         return;
     }
 
-    // 2. パスワード一致チェック
+    // 2. パスワード強度チェック
+    const passedCount = document.querySelectorAll('.hints li.valid').length;
+    if (passedCount < 4) {
+        showToast("パスワードの条件をすべて満たしてください");
+        return;
+    }
+
+    // 3. パスワード一致チェック
     if (pass !== confirmPass) {
         showToast("パスワードが一致していません");
         return;
     }
 
-    // 3. パスワード強度チェック（すべてのヒントが valid か）
-    const allValid = document.querySelectorAll('.hints li.valid').length === 4;
-    if (!allValid) {
-        showToast("パスワードの条件をすべて満たしてください");
-        return;
-    }
-
-    // すべてOKなら
-    alert("登録が完了しました"); 
-    // ここで実際のサーバー送信処理などを書きます
+    // すべてクリア
+    alert("Formeへようこそ！登録が完了しました。");
 });
+
+// --- パスワード強度チェック (リアルタイム) ---
+password.addEventListener('input', () => {
+    const val = password.value;
+    const checks = {
+        'req-length': val.length >= 8,
+        'req-upper': /[A-Z]/.test(val),
+        'req-number': /[0-9]/.test(val),
+        'req-symbol': /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(val)
+    };
+
+    let passed = 0;
+    Object.keys(checks).forEach(id => {
+        const isValid = checks[id];
+        document.getElementById(id).classList.toggle('valid', isValid);
+        if(isValid) passed++;
+    });
+
+    meterBar.style.width = (passed / 4 * 100) + '%';
+    meterBar.style.backgroundColor = passed === 4 ? '#10b981' : '#0067C0';
+});
+
+// --- 表示ボタン (2秒間) ---
+toggleBtn.addEventListener('click', () => {
+    if (password.type === 'text') return;
+    password.type = 'text';
+    toggleBtn.textContent = '表示中';
+    setTimeout(() => {
+        password.type = 'password';
+        toggleBtn.textContent = '表示';
+    }, 2000);
+});
+
+// 初期フォーカス
+window.onload = () => document.getElementById('email').focus();
