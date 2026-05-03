@@ -215,3 +215,23 @@ input:focus {
     color: var(--text-sub);
     border-top: 1px solid var(--border);
 }
+
+/* 背景の波を制御するコンテナ */
+.bg-waves {
+    position: fixed; /* 画面に固定 */
+    bottom: 0;       /* 画面の下部に配置 */
+    left: 0;
+    width: 100%;
+    line-height: 0;  /* SVGの下に謎の隙間ができるのを防ぐ */
+    z-index: -1;     /* すべてのコンテンツの後ろに配置 */
+    overflow: hidden;
+}
+
+/* SVG自体のレスポンシブ設定 */
+.bg-waves svg {
+    position: relative;
+    display: block;
+    width: calc(130% + 1.3px); /* 画面幅より少し大きくして、端が切れないようにする */
+    height: 320px;
+    transform: rotateY(180deg);
+}
