@@ -128,19 +128,41 @@ input:focus {
 
 .password-group {
     position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* 修正：チェックマークの位置をShowボタンの左側に配置 */
+.success-icon {
+    position: absolute;
+    right: 60px; /* Showボタンと被らない位置 */
+    color: #10b981;
+    font-weight: bold;
+    font-size: 18px;
+    display: none; /* 初期は非表示 */
+    animation: scaleIn 0.2s ease;
+}
+
+@keyframes scaleIn {
+    from { transform: scale(0); }
+    to { transform: scale(1); }
 }
 
 .eye-icon {
     position: absolute;
     right: 16px;
-    top: 50%;
-    transform: translateY(-50%);
     background: none;
     border: none;
     color: var(--primary);
     font-size: 12px;
     font-weight: 600;
     cursor: pointer;
+    z-index: 2;
+}
+
+/* 入力欄の右側にアイコン用のスペースを確保 */
+#password {
+    padding-right: 85px; 
 }
 
 /* 強度メーター */
