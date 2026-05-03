@@ -1,150 +1,15 @@
-const password = document.getElementById('password');
-const meterBar = document.getElementById('meter-bar');
-const confirmPassword = document.getElementById('confirm-password');
-const matchError = document.getElementById('match-error');
-
-password.addEventListener('input', () => {
-    const val = password.value;
-    let strength = 0;
-
-    // バリデーションチェック & メーター計算
-    const checks = {
-        'req-length': val.length >= 8,
-        'req-upper': /[A-Z]/.test(val),
-        'req-number': /[0-9]/.test(val),
-        'req-symbol': /[!@#$%^&*]/.test(val)
-    };
-
-    Object.keys(checks).forEach(id => {
-        const isValid = checks[id];
-        document.getElementById(id).classList.toggle('valid', isValid);
-        if(isValid) strength += 25;
-    });
-
-    // 日本語（全角）チェック
-    if(/[^\x20-\x7e]/.test(val)) {
-        password.setCustomValidity("No Japanese characters allowed");
-        strength = 0;
-    } else {
-        password.setCustomValidity("");
-    }
-
-    // メーターの更新
-    meterBar.style.width = strength + '%';
-    meterBar.style.backgroundColor = strength === 100 ? '#10b981' : '#0067C0';
-});
-
-// パスワード一致チェック
-confirmPassword.addEventListener('input', () => {
-    const isMatch = password.value === confirmPassword.value;
-    matchError.style.display = isMatch ? 'none' : 'block';
-});
-
-// 表示切り替え（2秒間）
-document.getElementById('togglePassword').addEventListener('click', function() {
-    password.type = 'text';
-    this.textContent = 'Showing...';
-    setTimeout(() => {
-        password.type = 'password';
-        this.textContent = 'Show';
-    }, 2000);
-});
-
-const password = document.getElementById('password');
-const meterBar = document.getElementById('meter-bar');
-const successIcon = document.getElementById('pass-success-icon');
-
-password.addEventListener('input', () => {
-    const val = password.value;
-    
-    // バリデーション条件（記号の判定をより確実に）
-    const checks = {
-        'req-length': val.length >= 8,
-        'req-upper': /[A-Z]/.test(val),
-        'req-number': /[0-9]/.test(val),
-        'req-symbol': /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(val) // 記号範囲を拡大
-    };
-
-    let passedCount = 0;
-    Object.keys(checks).forEach(id => {
-        const isValid = checks[id];
-        document.getElementById(id).classList.toggle('valid', isValid);
-        if(isValid) passedCount++;
-    });
-
-    // チェックマークの付与に関するロジック
-    // メーターの更新
-    const strength = (passedCount / 4) * 100;
-    meterBar.style.width = strength + '%';
-    
-    if (strength === 100 && !/[^\x20-\x7e]/.test(val)) {
-        // 全条件クリア（かつ日本語なし）の時だけチェックを表示
-        meterBar.style.backgroundColor = '#10b981';
-        successIcon.style.display = 'block';
-    } else {
-        meterBar.style.backgroundColor = '#0067C0';
-        successIcon.style.display = 'none';
-    }
-});
-
-// 要素の取得
-const registrationForm = document.getElementById('registration-form');
-const password = document.getElementById('password');
-const confirmPassword = document.getElementById('confirm-password');
+// 要素を確実に取得
+const passwordInput = document.getElementById('password');
+const confirmInput = document.getElementById('confirm-password');
 const meterBar = document.getElementById('meter-bar');
 const matchError = document.getElementById('match-error');
 const toggleBtn = document.getElementById('togglePassword');
-const toastContainer = document.getElementById('toast-container');
 
-// --- トースト表示関数 ---
-function showToast(message) {
-    const toast = document.createElement('div');
-    toast.className = 'toast';
-    toast.innerHTML = `⚠️ <span>${message}</span>`;
+// パスワードリアルタイムチェック
+passwordInput.addEventListener('input', () => {
+    const val = passwordInput.value;
     
-    toastContainer.appendChild(toast);
-
-    // 2.7秒後に消去アニメーション開始
-    setTimeout(() => {
-        toast.classList.add('hide');
-        setTimeout(() => toast.remove(), 300);
-    }, 2700);
-}
-
-// --- 送信時のチェック ---
-registrationForm.addEventListener('submit', (e) => {
-    e.preventDefault(); // ページリロードを防止
-
-    const email = document.getElementById('email').value;
-    const pass = password.value;
-    const confirmPass = confirmPassword.value;
-
-    // 1. 未入力チェック
-    if (!email || !pass || !confirmPass) {
-        showToast("すべての項目を入力してください");
-        return;
-    }
-
-    // 2. パスワード強度チェック
-    const passedCount = document.querySelectorAll('.hints li.valid').length;
-    if (passedCount < 4) {
-        showToast("パスワードの条件をすべて満たしてください");
-        return;
-    }
-
-    // 3. パスワード一致チェック
-    if (pass !== confirmPass) {
-        showToast("パスワードが一致していません");
-        return;
-    }
-
-    // すべてクリア
-    alert("Formeへようこそ！登録が完了しました。");
-});
-
-// --- パスワード強度チェック (リアルタイム) ---
-password.addEventListener('input', () => {
-    const val = password.value;
+    // バリデーション条件
     const checks = {
         'req-length': val.length >= 8,
         'req-upper': /[A-Z]/.test(val),
@@ -152,27 +17,60 @@ password.addEventListener('input', () => {
         'req-symbol': /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(val)
     };
 
-    let passed = 0;
+    let passedCount = 0;
+
+    // 各ヒントのクラスを切り替え
     Object.keys(checks).forEach(id => {
-        const isValid = checks[id];
-        document.getElementById(id).classList.toggle('valid', isValid);
-        if(isValid) passed++;
+        const element = document.getElementById(id);
+        if (element) {
+            if (checks[id]) {
+                element.classList.add('valid');
+                passedCount++;
+            } else {
+                element.classList.remove('valid');
+            }
+        }
     });
 
-    meterBar.style.width = (passed / 4 * 100) + '%';
-    meterBar.style.backgroundColor = passed === 4 ? '#10b981' : '#0067C0';
+    // 強度メーターの更新
+    const progress = (passedCount / 4) * 100;
+    meterBar.style.width = progress + '%';
+    
+    // 全条件クリアで色を緑に
+    meterBar.style.backgroundColor = (passedCount === 4) ? '#10b981' : '#0067C0';
+
+    // 全角入力禁止設定
+    if(/[^\x20-\x7e]/.test(val)) {
+        passwordInput.setCustomValidity("パスワードは半角英数字・記号のみです");
+    } else {
+        passwordInput.setCustomValidity("");
+    }
 });
 
-// --- 表示ボタン (2秒間) ---
+// パスワード一致チェック
+confirmInput.addEventListener('input', () => {
+    if (passwordInput.value === confirmInput.value) {
+        matchError.style.display = 'none';
+    } else {
+        matchError.style.display = 'block';
+    }
+});
+
+// 表示ボタン（2秒間表示）
 toggleBtn.addEventListener('click', () => {
-    if (password.type === 'text') return;
-    password.type = 'text';
-    toggleBtn.textContent = '表示中';
-    setTimeout(() => {
-        password.type = 'password';
-        toggleBtn.textContent = '表示';
-    }, 2000);
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleBtn.textContent = '表示中';
+        
+        setTimeout(() => {
+            passwordInput.type = 'password';
+            toggleBtn.textContent = '表示';
+        }, 2000);
+    }
 });
 
 // 初期フォーカス
-window.onload = () => document.getElementById('email').focus();
+window.onload = () => {
+    const emailField = document.getElementById('email');
+    if(emailField) emailField.focus();
+};
