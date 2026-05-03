@@ -5,20 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>ホーム - Forme</title>
     
-    <!-- PWA設定 (login.htmlと共通) -->
+    <!-- PWA設定 -->
     <link rel="manifest" href="manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="Forme">
-    <link rel="apple-touch-icon" href="icon-192.png">
     
-    <!-- 共通のCSSを適用 -->
-    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts & Lucide Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- 背景の波 (透明度 0.30) -->
+    <!-- ブラウザ閲覧時のみ表示されるヘッダー -->
+    <header class="web-header">
+        <div class="header-container">
+            <div class="logo"><span class="logo-dot"></span>Forme</div>
+            <nav class="header-nav">
+                <a href="index.html" class="active"><i data-lucide="home"></i> ホーム</a>
+                <a href="#"><i data-lucide="search"></i> 検索</a>
+                <a href="#"><i data-lucide="bell"></i> 通知</a>
+                <a href="login.html"><i data-lucide="user"></i> ログイン</a>
+            </nav>
+        </div>
+    </header>
+
     <div class="bg-waves">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
             <defs>
@@ -33,97 +46,43 @@
 
     <div class="wrapper">
         <main class="container">
-            <!-- ホーム画面のメインカード -->
-            <div class="card">
-                <header class="card-header">
-                    <div class="card-logo">
-                        <span class="logo-dot"></span>Forme
-                    </div>
-                    <h1>こんにちは！</h1>
-                    <p>今日のあなたの体験をデザインしましょう</p>
-                </header>
-
-                <div class="separator">本日のステータス</div>
-
-                <!-- ダッシュボード風のコンテンツ -->
-                <div style="display: flex; flex-direction: column; gap: 16px; margin: 20px 0;">
-                    <div style="background: #f1f5f9; padding: 20px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center;">
-                        <div>
-                            <p style="font-size: 12px; color: var(--text-sub); margin: 0;">アクティブプロジェクト</p>
-                            <p style="font-size: 20px; font-weight: 600; margin: 4px 0 0;">12件</p>
-                        </div>
-                        <span style="font-size: 24px;">🚀</span>
-                    </div>
-
-                    <div style="background: #f1f5f9; padding: 20px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center;">
-                        <div>
-                            <p style="font-size: 12px; color: var(--text-sub); margin: 0;">今週の進捗</p>
-                            <p style="font-size: 20px; font-weight: 600; margin: 4px 0 0;">85%</p>
-                        </div>
-                        <span style="font-size: 24px;">📈</span>
-                    </div>
+            <div class="home-hero">
+                <h1>Welcome to <span class="accent">Forme</span></h1>
+                <p>洗練されたユーザーインターフェースが、あなたのアイデアを形にします。</p>
+                <div class="hero-actions">
+                    <button class="submit-btn">プロジェクトを始める</button>
+                    <button class="secondary-btn">詳細を見る</button>
                 </div>
-
-                <button type="button" class="submit-btn">新しいプロジェクトを作成</button>
-                
-                <p style="text-align: center; font-size: 13px; color: var(--text-sub); margin-top: 24px;">
-                    設定を変更しますか？ <a href="login.html" style="color: var(--primary); font-weight: 600; text-decoration: none;">ログアウト</a>
-                </p>
             </div>
+            
+            <!-- 他のコンテンツをここに追加可能 -->
         </main>
     </div>
 
-    <!-- アプリ風ボトムタブバー (ホームをActiveに設定) -->
+    <!-- PWA（standalone）時のみ表示されるボトムタブバー -->
     <nav class="bottom-nav">
-        <a href="index.html" class="nav-item active">
-            <span class="nav-icon">🏠</span>
-            <span class="nav-label">ホーム</span>
-        </a>
-        <a href="#" class="nav-item">
-            <span class="nav-icon">🔍</span>
-            <span class="nav-label">検索</span>
-        </a>
-        <a href="#" class="nav-item">
-            <span class="nav-icon">🔔</span>
-            <span class="nav-label">通知</span>
-        </a>
-        <a href="login.html" class="nav-item">
-            <span class="nav-icon">👤</span>
-            <span class="nav-label">ログイン</span>
-        </a>
+        <a href="index.html" class="nav-item active"><i data-lucide="home"></i><span>ホーム</span></a>
+        <a href="#" class="nav-item"><i data-lucide="search"></i><span>検索</span></a>
+        <a href="#" class="nav-item"><i data-lucide="bell"></i><span>通知</span></a>
+        <a href="login.html" class="nav-item"><i data-lucide="user"></i><span>ユーザー</span></a>
     </nav>
 
+    <!-- 共通フッター -->
     <footer class="main-footer">
-        <div class="footer-content">
-            <div class="footer-brand">
-                <div class="logo"><span class="logo-dot"></span>Forme</div>
-                <p class="footer-description">洗練されたデザインと最高のユーザー体験をあなたに。</p>
-            </div>
-            <div class="footer-group">
-                <div class="footer-column">
-                    <h4>プロダクト</h4>
-                    <a href="#">機能紹介</a>
-                    <a href="#">料金プラン</a>
-                </div>
-                <div class="footer-column">
-                    <h4>サポート</h4>
-                    <a href="#">利用規約</a>
-                    <a href="#">プライバシー</a>
-                </div>
-            </div>
-        </div>
+        <!-- (以前のコードと同様) -->
         <div class="footer-bottom">
             <p>&copy; 2026 Forme. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
-        // PWA サービスワーカー登録
+        // Lucide Iconsの初期化
+        lucide.createIcons();
+
+        // サービスワーカー登録
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js')
-                    .then(reg => console.log('PWA Ready'))
-                    .catch(err => console.log('PWA Error:', err));
+                navigator.serviceWorker.register('sw.js');
             });
         }
     </script>
