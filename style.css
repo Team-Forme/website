@@ -223,3 +223,136 @@ input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 4px
         gap: 25px;
     }
 }
+
+/* --- 変数定義 --- */
+:root {
+    --primary: #0067C0;
+    --text-main: #1e293b;
+    --text-sub: #64748b;
+    --bg-white: #ffffff;
+    --border: rgba(0, 0, 0, 0.08);
+}
+
+/* --- Web用ヘッダー (ブラウザ表示時) --- */
+.web-header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 70px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-nav {
+    display: flex;
+    gap: 32px;
+}
+
+.header-nav a {
+    text-decoration: none;
+    color: var(--text-sub);
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s;
+}
+
+.header-nav a:hover, .header-nav a.active {
+    color: var(--primary);
+}
+
+.header-nav i { width: 18px; height: 18px; }
+
+/* --- PWA用ボトムナビ (デフォルト非表示) --- */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 65px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(15px);
+    border-top: 1px solid var(--border);
+    display: none; /* 基本は消す */
+    justify-content: space-around;
+    padding-bottom: env(safe-area-inset-bottom);
+    z-index: 2000;
+}
+
+/* --- 表示の切り替えロジック --- */
+
+/* PWAモード (standalone) の時だけボトムナビを出し、ヘッダーを消す */
+@media (display-mode: standalone) {
+    .bottom-nav { display: flex; }
+    .web-header { display: none; }
+}
+
+/* スマホ閲覧時 (ブラウザ) の調整 */
+@media (max-width: 768px) {
+    .header-nav { display: none; } /* スマホのブラウザではヘッダー内ナビは隠す（スッキリさせるため） */
+    .bottom-nav { display: flex; } /* スマホならブラウザでもボトムナビの方が見やすいので表示 */
+}
+
+/* ボトムナビ・アイテムの装飾 */
+.nav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--text-sub);
+    gap: 4px;
+}
+
+.nav-item.active { color: var(--primary); }
+.nav-item i { width: 22px; height: 22px; }
+.nav-item span { font-size: 10px; font-weight: 600; }
+
+/* --- ホーム画面専用スタイル --- */
+.home-hero {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.home-hero h1 {
+    font-size: 42px;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: 16px;
+}
+
+.home-hero .accent { color: var(--primary); }
+
+.hero-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 32px;
+}
+
+.secondary-btn {
+    background: #f1f5f9;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    color: var(--text-main);
+    cursor: pointer;
+}
