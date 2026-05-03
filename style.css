@@ -208,22 +208,101 @@ input:focus {
 }
 
 /* フッター */
-.footer-links {
+/* --- アップグレードしたフッターのスタイル --- */
+.main-footer {
+    background-color: #4f4643; /* 指定カラー */
+    color: #ffffff;
+    padding: 60px 0 30px;
+    margin-top: auto; /* コンテンツが少なくても最下部に配置 */
+}
+
+.footer-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 40px;
     display: flex;
-    justify-content: center;
-    gap: 24px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.footer-brand {
+    max-width: 300px;
+}
+
+/* フッター内のロゴの色調整 */
+.footer-brand .logo {
+    color: #ffffff;
     margin-bottom: 16px;
 }
 
-.footer-links a {
-    color: var(--text-sub);
-    text-decoration: none;
-    font-size: 12px;
-    transition: color 0.2s;
+.footer-brand .logo span {
+    color: #a59e9c; /* フッター内では青ではなく落ち着いた色に */
 }
 
-.footer-links a:hover {
-    color: var(--primary);
+.footer-description {
+    font-size: 14px;
+    color: #cbc6c5;
+    line-height: 1.6;
+}
+
+.footer-group {
+    display: flex;
+    gap: 60px;
+}
+
+.footer-column h4 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #ffffff;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.footer-column a {
+    display: block;
+    color: #cbc6c5;
+    text-decoration: none;
+    font-size: 14px;
+    margin-bottom: 12px;
+    transition: color 0.2s ease;
+}
+
+.footer-column a:hover {
+    color: #ffffff;
+}
+
+.footer-bottom {
+    max-width: 1100px;
+    margin: 40px auto 0;
+    padding: 30px 40px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+.footer-bottom p {
+    font-size: 12px;
+    color: #9d9694;
+}
+
+/* スマホ対応 */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .footer-brand {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    .footer-brand .logo {
+        justify-content: center;
+    }
+    .footer-group {
+        justify-content: center;
+        gap: 40px;
+    }
 }
 
 /* 背景の波を制御するコンテナ */
