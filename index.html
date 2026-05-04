@@ -3,88 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>ホーム - Forme</title>
-    
-    <!-- PWA設定 -->
+    <title>Forme | Home</title>
     <link rel="manifest" href="manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="Forme">
-    
-    <!-- Google Fonts & Lucide Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
-    
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="home-page">
 
-    <!-- ブラウザ閲覧時のみ表示されるヘッダー -->
-    <header class="web-header">
-        <div class="header-container">
-            <div class="logo"><span class="logo-dot"></span>Forme</div>
-            <nav class="header-nav">
-                <a href="index.html" class="active"><i data-lucide="home"></i> ホーム</a>
-                <a href="#"><i data-lucide="search"></i> 検索</a>
-                <a href="#"><i data-lucide="bell"></i> 通知</a>
-                <a href="login.html"><i data-lucide="user"></i> ログイン</a>
+    <!-- 高級感のある磨りガラスヘッダー -->
+    <header class="main-header">
+        <div class="header-inner">
+            <div class="brand">
+                <div class="logo-mark"></div>
+                <span class="brand-name">Forme</span>
+            </div>
+            <nav class="desktop-nav">
+                <a href="index.html" class="active">ホーム</a>
+                <a href="#">ニュース</a>
+                <a href="#">ライブラリ</a>
+                <a href="login.html" class="login-link">ログイン</a>
             </nav>
+            <div class="header-actions">
+                <button class="icon-btn"><i data-lucide="search"></i></button>
+                <button class="icon-btn"><i data-lucide="bell"></i></button>
+            </div>
         </div>
     </header>
 
-    <div class="bg-waves">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-            <defs>
-                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" style="stop-color:rgba(0, 103, 192, 0.30);stop-opacity:1" />
-                    <stop offset="100%" style="stop-color:rgba(0, 103, 192, 0);stop-opacity:1" />
-                </linearGradient>
-            </defs>
-            <path fill="url(#grad1)" d="M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,149.3C672,149,768,203,864,218.7C960,235,1056,213,1152,186.7C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
-        </svg>
-    </div>
-
-    <div class="wrapper">
-        <main class="container">
-            <div class="home-hero">
-                <h1>Welcome to <span class="accent">Forme</span></h1>
-                <p>洗練されたユーザーインターフェースが、あなたのアイデアを形にします。</p>
-                <div class="hero-actions">
-                    <button class="submit-btn">プロジェクトを始める</button>
-                    <button class="secondary-btn">詳細を見る</button>
+    <main class="content">
+        <!-- ニューススライダー・セクション -->
+        <section class="slider-section">
+            <div class="section-header">
+                <h2>最新のニュース</h2>
+                <div class="slider-controls">
+                    <button id="prevBtn"><i data-lucide="chevron-left"></i></button>
+                    <button id="nextBtn"><i data-lucide="chevron-right"></i></button>
                 </div>
             </div>
             
-            <!-- 他のコンテンツをここに追加可能 -->
-        </main>
-    </div>
+            <div class="slider-container">
+                <div class="slider-track" id="sliderTrack">
+                    <!-- Slide 1 -->
+                    <div class="slide">
+                        <div class="slide-card headline">
+                            <div class="badge">Update</div>
+                            <h3>Forme v3.0 リリースのお知らせ</h3>
+                            <p>より速く、より美しく。新しいデザインシステムが導入されました。</p>
+                            <span class="date">2026.05.01</span>
+                        </div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="slide">
+                        <div class="slide-card">
+                            <div class="badge">Event</div>
+                            <h3>クリエイター・ミートアップ開催</h3>
+                            <p>次世代のUIデザインについて語り合うオンラインイベント。</p>
+                            <span class="date">2026.05.10</span>
+                        </div>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="slide">
+                        <div class="slide-card">
+                            <div class="badge">Tips</div>
+                            <h3>効率を最大化する5つのショートカット</h3>
+                            <p>ワークフローを劇的に改善するための秘訣を公開中。</p>
+                            <span class="date">2026.05.15</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <!-- PWA（standalone）時のみ表示されるボトムタブバー -->
+        <!-- メインアクション -->
+        <section class="hero-minimal">
+            <h1>Create your <br><span class="gradient-text">Identity.</span></h1>
+            <p>Formeはあなたのクリエイティビティを解き放つプラットフォームです。</p>
+            <button class="primary-btn">無料で始める</button>
+        </section>
+    </main>
+
+    <!-- PWA用ボトムナビ -->
     <nav class="bottom-nav">
-        <a href="index.html" class="nav-item active"><i data-lucide="home"></i><span>ホーム</span></a>
-        <a href="#" class="nav-item"><i data-lucide="search"></i><span>検索</span></a>
-        <a href="#" class="nav-item"><i data-lucide="bell"></i><span>通知</span></a>
-        <a href="login.html" class="nav-item"><i data-lucide="user"></i><span>ユーザー</span></a>
+        <a href="index.html" class="nav-item active"><i data-lucide="home"></i><span>Home</span></a>
+        <a href="#" class="nav-item"><i data-lucide="layout-grid"></i><span>Explore</span></a>
+        <a href="#" class="nav-item"><i data-lucide="message-circle"></i><span>Chat</span></a>
+        <a href="login.html" class="nav-item"><i data-lucide="user"></i><span>Profile</span></a>
     </nav>
 
-    <!-- 共通フッター -->
-    <footer class="main-footer">
-        <!-- (以前のコードと同様) -->
-        <div class="footer-bottom">
-            <p>&copy; 2026 Forme. All rights reserved.</p>
-        </div>
-    </footer>
-
     <script>
-        // Lucide Iconsの初期化
         lucide.createIcons();
 
-        // サービスワーカー登録
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js');
-            });
-        }
+        // シンプルなスライダー制御
+        const track = document.getElementById('sliderTrack');
+        let index = 0;
+        document.getElementById('nextBtn').onclick = () => {
+            if (index < 2) index++;
+            track.style.transform = `translateX(-${index * 85}%)`;
+        };
+        document.getElementById('prevBtn').onclick = () => {
+            if (index > 0) index--;
+            track.style.transform = `translateX(-${index * 85}%)`;
+        };
     </script>
 </body>
 </html>
