@@ -74,3 +74,12 @@ window.onload = () => {
     const emailField = document.getElementById('email');
     if(emailField) emailField.focus();
 };
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Lucideアイコンを表示させるためのコマンド
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+    
+    console.log("Forme: 正常に読み込まれました。");
+});
