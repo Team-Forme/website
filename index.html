@@ -4,108 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Forme | Home</title>
-    <link rel="manifest" href="manifest.json">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    <!-- 1. Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <!-- 2. Lucide Icons (アイコン) -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- 3. CSS (ここが読み込まれないと崩れます) -->
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="home-page">
+<body>
 
-    <!-- 高級感のある磨りガラスヘッダー -->
+    <!-- ヘッダー -->
     <header class="main-header">
         <div class="header-inner">
             <div class="brand">
                 <div class="logo-mark"></div>
-                <span class="brand-name">Forme</span>
+                <span>Forme</span>
             </div>
             <nav class="desktop-nav">
                 <a href="index.html" class="active">ホーム</a>
+                <a href="#">サービス</a>
                 <a href="#">ニュース</a>
-                <a href="#">ライブラリ</a>
-                <a href="login.html" class="login-link">ログイン</a>
+                <a href="login.html" class="login-btn">ログイン</a>
             </nav>
-            <div class="header-actions">
-                <button class="icon-btn"><i data-lucide="search"></i></button>
-                <button class="icon-btn"><i data-lucide="bell"></i></button>
-            </div>
         </div>
     </header>
 
-    <main class="content">
-        <!-- ニューススライダー・セクション -->
-        <section class="slider-section">
-            <div class="section-header">
-                <h2>最新のニュース</h2>
-                <div class="slider-controls">
-                    <button id="prevBtn"><i data-lucide="chevron-left"></i></button>
-                    <button id="nextBtn"><i data-lucide="chevron-right"></i></button>
-                </div>
-            </div>
-            
-            <div class="slider-container">
-                <div class="slider-track" id="sliderTrack">
-                    <!-- Slide 1 -->
-                    <div class="slide">
-                        <div class="slide-card headline">
-                            <div class="badge">Update</div>
-                            <h3>Forme v3.0 リリースのお知らせ</h3>
-                            <p>より速く、より美しく。新しいデザインシステムが導入されました。</p>
-                            <span class="date">2026.05.01</span>
-                        </div>
-                    </div>
-                    <!-- Slide 2 -->
-                    <div class="slide">
-                        <div class="slide-card">
-                            <div class="badge">Event</div>
-                            <h3>クリエイター・ミートアップ開催</h3>
-                            <p>次世代のUIデザインについて語り合うオンラインイベント。</p>
-                            <span class="date">2026.05.10</span>
-                        </div>
-                    </div>
-                    <!-- Slide 3 -->
-                    <div class="slide">
-                        <div class="slide-card">
-                            <div class="badge">Tips</div>
-                            <h3>効率を最大化する5つのショートカット</h3>
-                            <p>ワークフローを劇的に改善するための秘訣を公開中。</p>
-                            <span class="date">2026.05.15</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- メインアクション -->
-        <section class="hero-minimal">
+    <!-- メインコンテンツエリア -->
+    <main class="content-wrapper">
+        <section class="hero">
             <h1>Create your <br><span class="gradient-text">Identity.</span></h1>
-            <p>Formeはあなたのクリエイティビティを解き放つプラットフォームです。</p>
-            <button class="primary-btn">無料で始める</button>
+            <p>洗練されたデザインを、あなたの手に。</p>
         </section>
     </main>
 
-    <!-- PWA用ボトムナビ -->
-    <nav class="bottom-nav">
-        <a href="index.html" class="nav-item active"><i data-lucide="home"></i><span>Home</span></a>
-        <a href="#" class="nav-item"><i data-lucide="layout-grid"></i><span>Explore</span></a>
-        <a href="#" class="nav-item"><i data-lucide="message-circle"></i><span>Chat</span></a>
-        <a href="login.html" class="nav-item"><i data-lucide="user"></i><span>Profile</span></a>
-    </nav>
+    <!-- 背景の波 (SVG) -->
+    <div class="bg-waves">
+        <svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg">
+            <path fill="rgba(0, 103, 192, 0.15)" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,250.7C960,235,1056,181,1152,165.3C1248,149,1344,171,1392,181.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+    </div>
 
-    <script>
-        lucide.createIcons();
+    <!-- フッター -->
+    <footer class="main-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <div class="brand">Forme</div>
+                <p>Minimal & Modern Interface</p>
+            </div>
+            <div class="footer-links">
+                <div class="link-group">
+                    <a href="#">利用規約</a>
+                    <a href="#">プライバシー</a>
+                    <a href="#">お問い合わせ</a>
+                </div>
+            </div>
+        </div>
+        <p class="copyright">&copy; 2026 Forme. All rights reserved.</p>
+    </footer>
 
-        // シンプルなスライダー制御
-        const track = document.getElementById('sliderTrack');
-        let index = 0;
-        document.getElementById('nextBtn').onclick = () => {
-            if (index < 2) index++;
-            track.style.transform = `translateX(-${index * 85}%)`;
-        };
-        document.getElementById('prevBtn').onclick = () => {
-            if (index > 0) index--;
-            track.style.transform = `translateX(-${index * 85}%)`;
-        };
-    </script>
+    <!-- JS (bodyの最後で読み込む) -->
+    <script src="script.js"></script>
 </body>
 </html>
